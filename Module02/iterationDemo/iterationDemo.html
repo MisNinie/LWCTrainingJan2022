@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="Iterator Demo" icon-name="standard:contact">
+        <div class="slds-p-horizontal_small">
+            <template iterator:cont={contacts}>
+                <template if:true={cont.first}>
+                    <div class="slds-border_top" key={cont.value.id}></div>
+                </template>
+                    <div key={cont.value.id}>&nbsp;{cont.value.Name} &nbsp;-&nbsp; {cont.value.Email}</div>
+                <template if:true={cont.last}>
+                    <div class="slds-border_top" key={cont.value.id}></div>
+                </template>
+            </template>   
+        </div>         
+    </lightning-card>
+
+    <lightning-card title="For:Each Demo" icon-name="standard:contact">
+        <div class="slds-p-horizontal_small">
+            
+            <template if:true={contacts}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+                    <thead>
+                        <tr>
+                            <td style="background: #eee; font-weight:bold;">Index</td>
+                            <td style="background: #eee; font-weight:bold;">Id</td>
+                            <td style="background: #eee; font-weight:bold;">Name</td>
+                            <td style="background: #eee; font-weight:bold;">Email</td>                           
+                        </tr>
+                    </thead>
+                     <tbody>
+                        <template for:each={contacts} for:item="cont" for:index="index">
+                            <tr key={cont.id}>
+                                <td>{index}</td>
+                                <td>{cont.id}</td>
+                                <td>{cont.Name}</td>
+                                <td>{cont.Email}</td>                                
+                            </tr>
+                        </template>                          
+                     </tbody>
+                 </table>
+                
+            </template>
+        </div>         
+    </lightning-card>
+
+
+
+    
+</template>
